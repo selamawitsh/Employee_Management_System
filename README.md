@@ -1,4 +1,4 @@
-# 👨‍💼 Employee Management System
+#  Employee Management System
 
 A full-stack web application for managing employees, built with the **MERN stack** (MongoDB, Express.js, React, Node.js). This system features secure authentication, role-based access control, and complete CRUD operations for employee records.
 
@@ -16,7 +16,7 @@ A full-stack web application for managing employees, built with the **MERN stack
 
 ##  Tech Stack
 
-### 🖥 Frontend
+###  Frontend
 - React (with Hooks)
 - React Router DOM
 - Axios

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import EmployeeList from '../components/EmployeeList';
-import EmployeeForm from '../components/EmployeeForm';
+import React, { useState, useEffect } from "react";
+import EmployeeList from "../components/EmployeeList";
+import EmployeeForm from "../components/EmployeeForm";
 
 function Dashboard() {
   const [user, setUser] = useState(null);
@@ -8,7 +8,7 @@ function Dashboard() {
   const [refreshFlag, setRefreshFlag] = useState(false);
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('user'));
+    const storedUser = JSON.parse(localStorage.getItem("user"));
     if (storedUser) {
       setUser(storedUser.user);
     }
@@ -20,26 +20,35 @@ function Dashboard() {
 
   const handleSave = () => {
     setSelectedEmployee(null);
-    setRefreshFlag(flag => !flag); 
+    setRefreshFlag((flag) => !flag);
   };
 
   const handleCancel = () => {
     setSelectedEmployee(null);
   };
 
-  if (!user) return <p>Loading...</p>;
+  if (!user)
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-gray-900 to-black text-white">
+        <p className="text-xl text-blue-200">Loading...</p>
+      </div>
+    );
 
   return (
-    <div>
-      <h2>Welcome, {user.name}</h2>
-      {user.role === 'admin' && (
-        <EmployeeForm
-          employee={selectedEmployee}
-          onSave={handleSave}
-          onCancel={handleCancel}
-        />
-      )}
-      <EmployeeList onEdit={handleEdit} refreshFlag={refreshFlag} />
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-gray-900 to-black text-white py-8">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="text-3xl font-bold mb-8 text-blue-300">
+          Welcome, {user.name}
+        </h2>
+        {user.role === "admin" && (
+          <EmployeeForm
+            employee={selectedEmployee}
+            onSave={handleSave}
+            onCancel={handleCancel}
+          />
+        )}
+        <EmployeeList onEdit={handleEdit} refreshFlag={refreshFlag} />
+      </div>
     </div>
   );
 }
